@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Command</key>
+	<string>cpuload=`top -l 1 | head -n 10 | awk '/CPU usage/ {print $3}'`
+memused=`top -l 1 | head -n 10 | awk '/PhysMem/ {print $2}'`
+diskused=`df | awk '/dev\/disk0s2/ &amp;&amp; NF&gt;=5 {print $5}'`
+
+ibytes0=`netstat -bi -I en0 | head -n 2 | tail -1 | awk '{print $7}'`
+obytes0=`netstat -bi -I en0 | head -n 2 | tail -1 | awk '{print $10}'`
+ibytes1=`netstat -bi -I en1 | head -n 2 | tail -1 | awk '{print $7}'`
+obytes1=`netstat -bi -I en1 | head -n 2 | tail -1 | awk '{print $10}'`
+
+ echo "CPU" $cpuload "-" "MEM" $memused "-" "SSD" "$diskused" \
+ "- LAN" \
+ "\033[0;32m""IN:"`python /Users/jens/bin/valueToIeee1541String.py $ibytes0` \
+ "\033[0;31m""OUT:"`python /Users/jens/bin/valueToIeee1541String.py $obytes0` \
+ "\033[0m""- WIFI" \
+ "\033[0;32m""IN:"`python /Users/jens/bin/valueToIeee1541String.py $ibytes1` \
+ "\033[0;31m""OUT:"`python /Users/jens/bin/valueToIeee1541String.py $obytes1`
+</string>
+	<key>DropShadow</key>
+	<false/>
+	<key>FailureImage</key>
+	<data>
+	</data>
+	<key>FontFamily</key>
+	<string>SourceCodePro-Medium</string>
+	<key>FontSize</key>
+	<real>13</real>
+	<key>GeekletFrame</key>
+	<string>{{-2, 32}, {1018, 45}}</string>
+	<key>HasShadow</key>
+	<false/>
+	<key>Identifier</key>
+	<string>org.tynsoe.geeklet.shell</string>
+	<key>Name</key>
+	<string>oneLineSystemMon</string>
+	<key>RefreshInterval</key>
+	<integer>10</integer>
+	<key>SetLocale</key>
+	<false/>
+	<key>SuccessImage</key>
+	<data>
+	</data>
+	<key>TextColor</key>
+	<data>
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMDhAJm
+	ZoMAAAA/AYY=
+	</data>
+	<key>TextStrikethrough</key>
+	<integer>0</integer>
+	<key>TextUnderline</key>
+	<integer>0</integer>
+</dict>
+</plist>
