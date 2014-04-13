@@ -14,11 +14,11 @@ obytes1=`netstat -bi -I en1 | head -n 2 | tail -1 | awk '{print $10}'`
 
  echo "CPU" $cpuload "-" "MEM" $memused "-" "SSD" "$diskused" \
  "- LAN" \
- "\033[0;32m""IN:"`python /Users/jens/bin/valueToIeee1541String.py $ibytes0` \
- "\033[0;31m""OUT:"`python /Users/jens/bin/valueToIeee1541String.py $obytes0` \
+ "\033[0;32m""IN:"`python  ~/bin/valueToIeee1541String.py $ibytes0` \
+ "\033[0;31m""OUT:"`python ~/bin/valueToIeee1541String.py $obytes0` \
  "\033[0m""- WIFI" \
- "\033[0;32m""IN:"`python /Users/jens/bin/valueToIeee1541String.py $ibytes1` \
- "\033[0;31m""OUT:"`python /Users/jens/bin/valueToIeee1541String.py $obytes1`
+ "\033[0;32m""IN:"`python  ~/bin/valueToIeee1541String.py $ibytes1` \
+ "\033[0;31m""OUT:"`python ~/bin/valueToIeee1541String.py $obytes1`
 </string>
 	<key>DropShadow</key>
 	<false/>
